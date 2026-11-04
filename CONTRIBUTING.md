@@ -33,3 +33,13 @@ The full contract command includes the 6- and 18-decimal multi-market invariants
 Run the [local two-node workflow](script/local/README.md) after changes to any deployed constructor, engine, vault, runtime verifier or client workflow. Its runner owns an isolated local Anvil and generated evidence; it is not a public-chain deployment script.
 
 Keep large compiler artifacts, node dependencies and generated local-chain state out of Git. Do not commit private keys, credentials, environment files or deployment secrets.
+
+## Branches and release tags
+
+The public repository starts with the 0.1.0 release history. Clone it afresh for development. Keep historical checkouts pointed at the private archive; never push or merge their old history into this repository.
+
+Repository rules block new branch and tag creation with no standing bypass. They also block branch force-pushes and changes or deletion of existing release tags. Changes to `main` require a pull request.
+
+For a new contribution branch, a repository administrator checks the current public `main` commit, temporarily excludes only the exact new ref name from the branch-creation rule, creates that branch at the checked commit, and immediately removes the exclusion. Push the changes to that approved branch and open a pull request. Delete the branch after merging. Do not disable the whole ruleset or grant a standing administrator bypass.
+
+For a release, merge the version and changelog update through a verified pull request first. Temporarily exclude only the exact new tag ref from the tag-creation rule, create the tag at the verified merged commit, then immediately remove the exclusion. Keep the separate tag-update and tag-deletion rules active throughout. Confirm the tag target and restored rules before publishing the release.
