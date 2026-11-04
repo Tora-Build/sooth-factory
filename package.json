@@ -12,5 +12,6 @@
     "test:client": "node --test test/tooling/*.test.mjs",
     "test": "pnpm test:contracts && pnpm abi && pnpm test:client"
   },
-  "dependencies": { "viem": "2.45.1" }
+  "dependencies": { "viem": "2.45.1" },
+  "pnpm": { "overrides": { "ws": "^8.21.0" } }
 }
