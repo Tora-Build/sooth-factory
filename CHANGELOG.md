@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+- Require `ws` 8.21.0 or later through the pnpm override; the lockfile resolves 8.22.1. This fixes the memory-exhaustion and uninitialized-memory-disclosure advisories affecting the dependency in 0.1.0.
+- Restrict branch and tag creation, prevent branch force-pushes, and keep release tags immutable. Maintainers use the controlled ref-creation procedure in [CONTRIBUTING](CONTRIBUTING.md#branches-and-release-tags).
+- Contract sources, deployed-version support and ABI bytes are unchanged. The contract interface label remains `sooth-factory-v0.1.0`; 0.1.1 is a repository and tooling patch release.
+
 ## 0.1.0
 
 First public release. The contracts are experimental and have not had an independent external audit.
