@@ -1,0 +1,43 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+test = "test"
+script = "script"
+solc_version = "0.8.33"
+ast = true
+auto_detect_remappings = false
+optimizer = true
+optimizer_runs = 200
+# IR pipeline disabled: faster compiles, smaller stack depth. Audit artifacts
+# should be regenerated against this setting before any mainnet-class release.
+via_ir = false
+remappings = [
+"forge-std/=lib/forge-std/src/",
+"@openzeppelin/contracts/=lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/"
+]
+fs_permissions = [
+  { access = "read-write", path = "./deployments" },
+  { access = "read-write", path = "/tmp" },
+  { access = "read", path = "./broadcast" },
+  { access = "read", path = "./out" },
+  { access = "read", path = "./src" },
+  { access = "read", path = "./sdk" },
+]
+
+[fmt]
+line_length = 90
+tab_width = 4
+bracket_spacing = false
+int_types = 'long'
+quote_style = 'double'
+number_underscore = 'thousands'
+multiline_func_header = 'attributes_first'
+
+# Last-LP floor search. Inherits this file's default compiler and permissions.
+# The run counts live on the L-2 tests as `l2heavy.*` forge-config, so selecting
+# this profile does not raise the budget of the rest of the suite. Invoke:
+#   L2_RECORD_SLACK=1 FOUNDRY_PROFILE=l2heavy forge test \
+#     --match-contract 'L2LastLpFloorExitTest|L2FloorInvariant' --fuzz-seed 0x5d56b26
+[profile.l2heavy]
+invariant = { fail_on_revert = true }

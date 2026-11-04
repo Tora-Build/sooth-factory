@@ -1,0 +1,83 @@
+{
+  "note": "Testnet deployments of earlier builds. They do not contain the changes in this revision. Testnet only; not for real funds.",
+  "deployments": {
+    "11155111": {
+      "network": "sepolia",
+      "factory": "0x67926F892CaBa6A8b96ee45b0c927031371C9e85",
+      "registry": "0x14F1bd9E32B03147bDE743D50c4fb975b111D07b",
+      "truthImplementation": "0x892C9Cc7E3dd62e1418ac18A2e064b0c37e43E4c",
+      "release": "sooth-factory-v7",
+      "nodes": [
+        {
+          "amm": "0xD05Ff9F9fd49593941F8796f2fefB9B9c47A32E1",
+          "ammVault": "0x7b70baA2dCE3574D5Cb678Df45ea9af2334Ef978",
+          "book": "0x8c626E3f01e397F8E992CCeecFBE8a720ee45b12",
+          "bookVault": "0xb4e4e3c9c244Ce5D9729CB9E41d4aE2dBa3AAf31",
+          "bookToken": "0xD2552be2D1d910649612fC83d735EC9d05D2Ee32",
+          "bookTokenDecimals": 18,
+          "deployer": "0x8fd7463212Ba464fC13287C0dae981cd66165AA9",
+          "marketFactory": "0x9e4598a8C4Db4eC4249A4A25F08306391cFA46D1",
+          "positionManager": "0xb59Be1749E298e52cFD37e1f91eE6D645f5fc983",
+          "roles": "0x99B89Af18a8c4c7bf8275c67d56F2fEDc33E78D8"
+        },
+        {
+          "amm": "0x53a85353ec682b0aC6FA12d904b59da696B46e4E",
+          "ammVault": "0x5ca6683957AD35FA88D5Bc3f3220502133812F64",
+          "book": "0xeBdA3Ed9fdCD1d49DFA378DDbAA35F6242AA6B22",
+          "bookVault": "0x72354322102b74c6A249344Cf531ffC686f1Fb3F",
+          "bookToken": "0xad41A5781E953a3BA03E9a90Daa913d6fCD1775D",
+          "bookTokenDecimals": 6,
+          "deployer": "0x63983303BFA846611DA320C3e60638B39BcB3838",
+          "marketFactory": "0x536a64441eE7244B1366a16aF3AEffe7d080af90",
+          "positionManager": "0x3578B8EC5AFf6d22c5EF24100b12f14CE7A279cc",
+          "roles": "0xAECe6c6DaDB24dfA4E67bA29598a1750aF78b41f"
+        },
+        {
+          "amm": "0x90AdfE7ac370fdF4913E391ba9547566EBB40a6f",
+          "ammVault": "0xf5B7b981aA85D3800Fe5ec85731951FB3B7F0126",
+          "book": "0xE03eE43c993B0015e5bcab3903235E8539f9BAaa",
+          "bookVault": "0x64b3B4bB8ef221F0dE3048c00D6055a08618865E",
+          "bookToken": "0xD2552be2D1d910649612fC83d735EC9d05D2Ee32",
+          "bookTokenDecimals": 18,
+          "deployer": "0x88dA8B27A4ff0d434bBF02cb1534350Be7086BE1",
+          "marketFactory": "0xDC0Ee93dB3Ec590427F65b8D20105b65E842AF17",
+          "positionManager": "0xf86B096B10f2314726D25363019b3d7AF8214B36",
+          "roles": "0xa0A7B9Ea1844A5d80C0379FEa5a05a8CB542a908"
+        }
+      ]
+    },
+    "46630": {
+      "network": "robinhood-testnet",
+      "factory": "0x42D11954d64822A7241a40d4cC2257799d87447c",
+      "registry": "0x6Fca32DD89dA9CF6295B3d14966685FBE68Cc944",
+      "truthImplementation": "0x7eceAD287d9d35A6Ae855Bd564FED3033e73A0a1",
+      "release": "sooth-factory-v7.1",
+      "nodes": [
+        {
+          "amm": "0x30d596Cb8a9e15274FD1eFe9d360565014fB4100",
+          "ammVault": "0x39D9Dd5E9F821c173e0A1dcDD40Ce20eaBa4B638",
+          "book": "0xF977804f12b1771E795Fb143a0A56ae08a6443FE",
+          "bookVault": "0xa50dAA951dDE80eC3dFD246843A2054120f76797",
+          "bookToken": "0x30C8DC950284903Bc2d2468Ad520d7283cEEFb83",
+          "bookTokenDecimals": 6,
+          "deployer": "0xD35e92D699BbF9b36d6C06e921bbccc693422731",
+          "marketFactory": "0x7c807cE75011de0f66Cce10C61bD1FBCF5B72C09",
+          "positionManager": "0xbC17444c3B64D3B8f56E3Ef0AfFc01D83b0e1dE3",
+          "roles": "0x52C615469C256b531b76775e8217cA8dA6851ef7"
+        },
+        {
+          "amm": "0x7B55349f974Ca0194Bc9bB7C77F6e8504cFE75AE",
+          "ammVault": "0x41f4FbE0e290fFFba502d6a4488b9c8b51035B06",
+          "book": "0x49D760aA7dA7d167721F456fa7dd720814af20B0",
+          "bookVault": "0x8880fF4629d4C9d9a89798121eBf39e7347fD0F2",
+          "bookToken": "0x23c8313F374AeF7319616651AF46b550E433f40E",
+          "bookTokenDecimals": 6,
+          "deployer": "0xd6081C98629172E6B8a553FB6c9E6A3266378991",
+          "marketFactory": "0xE5685A017EC79cef429134FD114cD6EA8A333dF8",
+          "positionManager": "0x104ACBB477311da9FAa21595Fa98616B310949Ca",
+          "roles": "0xFa0aedf3e6F9Fe8BD8C0B0dB1a7A13648253DaF7"
+        }
+      ]
+    }
+  }
+}
