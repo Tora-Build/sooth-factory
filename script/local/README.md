@@ -6,13 +6,20 @@ Run from the repository root after installing the pinned dependencies:
 python3 script/local/run-local-smoke.py
 ```
 
-The runner requires Forge 1.8.1, Anvil 1.5.1, Cast, Python 3.10+ and Node 22+. It resolves Forge from `SOOTH_LOCAL_FORGE`, then `FORGE_BIN`, then `PATH`. Anvil and Cast resolve from `SOOTH_LOCAL_ANVIL` and `SOOTH_LOCAL_CAST`, respectively, then `PATH`. The version checks remain active. If several tool versions are installed, select the pinned executables explicitly:
+The runner requires Forge 1.8.1, Anvil 1.9.0, Cast, Python 3.10+ and Node 22+. It resolves Forge from `SOOTH_LOCAL_FORGE`, then `FORGE_BIN`, then `PATH`. Anvil and Cast resolve from `SOOTH_LOCAL_ANVIL` and `SOOTH_LOCAL_CAST`, respectively, then `PATH`. The version checks remain active. If several tool versions are installed, select the pinned executables explicitly:
 
 ```sh
 SOOTH_LOCAL_FORGE=/path/to/forge-1.8.1 \
-SOOTH_LOCAL_ANVIL=/path/to/anvil-1.5.1 \
+SOOTH_LOCAL_ANVIL=/path/to/anvil-1.9.0 \
 SOOTH_LOCAL_CAST=/path/to/cast \
 python3 script/local/run-local-smoke.py
+```
+
+Anvil 1.9.0 and Forge 1.8.1 come from different Foundry releases. To install both, run the commands below in this order. The last install stays active, so `PATH` keeps Forge 1.8.1. Then set `SOOTH_LOCAL_ANVIL=$HOME/.foundry/versions/v1.9.0/anvil`.
+
+```sh
+foundryup --install 1.9.0
+foundryup --install 1.8.1
 ```
 
 It starts its own isolated Anvil on `127.0.0.1:18545`, chain 31337, and stops that process on success or failure. It refuses an occupied port and accepts no RPC URL argument. The public Anvil development mnemonic, freely minted test assets and ManualAdjudicator are exclusively local fixtures. ManualAdjudicator is Factory's only shipped sample adjudicator; production profiles are supplied externally through the [adjudicator interface](../../src/interfaces/IAdjudicator.sol).
@@ -35,7 +42,7 @@ The local harness republishes the book policy between node A's two stages, chang
 
 Before local deployment the runner builds contracts and exports the current `sooth-factory-v0.1.0` SDK ABI, with ManualAdjudicator as its only adjudicator. The release manifest commits the interface version and keccak256 of those exact ABI bytes alongside the twelve artifact hashes. The lock-free request uses the V3 hash domain and AMM construction has two address arguments. The manifest records each node's encoded standing book policy for independent constructor reconstruction. The runtime verifier compares that preimage with both the request commitment and the registry's historical policy; later policy changes do not rewrite an active node.
 
-The runner keeps the 30,000,000 block gas limit, 24,576 runtime size limit and 49,152 initcode size limit enabled. Anvil 1.5.1 does not itself enforce Osaka's 16,777,216 transaction gas cap, so the runner independently checks both submitted gas limits and actual receipt gas for every transaction, including SDK transactions. The separately capped factory unit test checks both stages before this run.
+The runner keeps the 30,000,000 block gas limit, 24,576 runtime size limit and 49,152 initcode size limit enabled. Anvil 1.9.0 does not itself enforce Osaka's 16,777,216 transaction gas cap, so the runner independently checks both submitted gas limits and actual receipt gas for every transaction, including SDK transactions. The separately capped factory unit test checks both stages before this run.
 
 The deployment phase submits 100% of Forge's computed gas estimate, without an additional multiplier. Other phases retain their 150% multiplier. The runner rejects both a submitted limit above the transaction cap and actual execution above it; this does not increase any chain limit. Current measured maxima belong to the generated transcript and [STATUS](../../STATUS.md).
 
