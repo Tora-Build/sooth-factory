@@ -104,7 +104,7 @@ library PositionFeeAccounting {
     /// @notice Credit available after checkpoints. No iteration over positions.
 
     /// @dev Caller must pay from the same market's Token-A LP fee bucket. A reverted
-    /// token transfer must revert this debit atomically. No USDG ledger is accepted.
+    /// token transfer must revert this debit atomically. No book-token ledger is accepted.
     function take(State storage self, address holder) internal returns (uint256 amount) {
         require(self.frozen, InvalidPhase());
         amount = claimable(self, holder);

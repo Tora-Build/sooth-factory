@@ -20,7 +20,7 @@ Configuration calls use the administrative capabilities in the [factory role mat
 | Claim ordinary or contingent LP fees | Holder or validated engine flow | Earning-time holder entitlement in AmmFeeVault only |
 | Claim resolver fees | Any caller may trigger payment after eligibility | The committed resolution recipient for that venue/market |
 | Claim book timeout refund | Any caller may trigger payment after eligibility | Original recorded fee payer, never caller-selected |
-| Sweep unattributed surplus | Any caller may trigger the bounded operation | Immutable venue-specific surplus recipient, described in section 8 |
+| Sweep unattributed surplus | Any caller may trigger the bounded operation | Immutable venue-specific surplus recipient, described in section 7 |
 
 A permissionless claim trigger cannot change the recipient or amount. A payout to a restricted token address may remain claimable; it must not block unrelated beneficiaries or the other venue. Any later payout-redirection facility must be authorized by the entitled recipient, never by a market/node/protocol admin.
 
@@ -151,7 +151,7 @@ For `tokenA == bookToken == T`:
 
 1. AMM trading changes only AMM custody/fee ledgers; book trading changes only book custody/fee ledgers, apart from reading the shared truth state.
 2. AMM LP principal, fees, and timeout contingencies have zero access to book collateral or book revenue. Book refunds and protocol claims have zero access to AMM custody.
-3. Token equality does not change the [factory role matrix](factory-and-authority.md#role-contract) or the payment entitlements in section 2. Each vault applies its own authorization and fixed-recipient checks; holding both roles or separately owning a claim does not merge ledger entitlements.
+3. Token equality does not change the [factory role matrix](factory-and-authority.md#role-contract) or the payment entitlements in section 1. Each vault applies its own authorization and fixed-recipient checks; holding both roles or separately owning a claim does not merge ledger entitlements.
 4. Configuration version numbers may coincide numerically without identifying the same configuration. Venue is part of every lookup.
 5. Distinct venue positions stay distinct even if their collateral address and outcome are equal. No implicit conversion, cross-margin, netting, or combined share redemption is introduced.
 6. Depleting all legitimate claims in either venue first leaves the other fully backed. This holds for every ordering of operator/protocol, LP, trader, resolver, and refund claims.

@@ -206,7 +206,7 @@ contract AdversarialLifecycleTest is DualTokenBase {
     }
 
     // ============================================
-    // Finalize race: book/USDG remains outside LP on invalidation
+    // Finalize race: book value remains outside LP on invalidation
     // ============================================
 
     function test_FirstBurn_TriggersInvalidationAndRedirect() public {
@@ -246,7 +246,7 @@ contract AdversarialLifecycleTest is DualTokenBase {
         assertEq(
             vault.lpEntitlementOf(market, creator, address(usdc)),
             0,
-            "LP receives zero USDG"
+            "LP receives zero book token"
         );
         assertEq(bookVault.claimTimeoutRefund(market, alice), adjPot);
         assertEq(bookVault.claimProtocolFees(market), protocolPot);

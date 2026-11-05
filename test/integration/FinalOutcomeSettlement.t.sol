@@ -18,7 +18,7 @@ import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {DecimalMath} from "src/libraries/DecimalMath.sol";
 
 /// @notice Two simultaneous Token-A markets exercise final outcome settlement,
-/// partial LP burns, immediate sell payouts, and isolated USDG fee liabilities.
+/// partial LP burns, immediate sell payouts, and isolated book fee liabilities.
 contract FinalOutcomeSettlementTest is DualTokenBase {
     struct Venue {
         address market;
@@ -168,7 +168,7 @@ contract FinalOutcomeSettlementTest is DualTokenBase {
         orderEngine.settlePosition(v.market);
         vm.prank(bob);
         orderEngine.settlePosition(v.market);
-        assertEq(usdc.balanceOf(creator), creatorBookBefore, "LP received USDG");
+        assertEq(usdc.balanceOf(creator), creatorBookBefore, "LP received book token");
         assertEq(vault.lpEntitlementOf(v.market, creator, address(usdc)), 0);
         assertEq(bookVault.marketLiabilitiesOf(v.market, address(usdc)), bookLiability);
         assertGt(bookLiability, 0);

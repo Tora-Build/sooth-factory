@@ -504,7 +504,7 @@ contract PerMarketTokenATest is DualTokenBase {
         _assertInvalidDirectSellLifecycle(address(alternate6), true);
     }
 
-    function test_ClaimOrderIndependentForYesNoAndInvalid_LPNeverGetsUSDG() public {
+    function test_ClaimOrderIndependentForYesNoAndInvalid_LPNeverGetsBookToken() public {
         for (uint8 outcome = 0; outcome <= 2; outcome++) {
             _createMarket();
             _seedAmmPosition();
@@ -532,8 +532,10 @@ contract PerMarketTokenATest is DualTokenBase {
                 lpFirst.aliceBookTokenReceived, positionsFirst.aliceBookTokenReceived
             );
             assertEq(lpFirst.bobBookTokenReceived, positionsFirst.bobBookTokenReceived);
-            assertEq(lpFirst.creatorBookTokenReceived, 0, "LP receives zero USDG");
-            assertEq(positionsFirst.creatorBookTokenReceived, 0, "LP receives zero USDG");
+            assertEq(lpFirst.creatorBookTokenReceived, 0, "LP receives zero book token");
+            assertEq(
+                positionsFirst.creatorBookTokenReceived, 0, "LP receives zero book token"
+            );
             assertEq(
                 vault.lpEntitlementOf(market, creator, address(usdc)),
                 0,
