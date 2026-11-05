@@ -25,7 +25,7 @@ CAST = Path(os.environ.get("SOOTH_LOCAL_CAST") or shutil.which("cast") or "cast"
 ARTIFACTS = ["NodeRoles", "OrderEngine", "AMMEngine", "AmmFeeVault", "BookFeeVault",
              "MarketFactory", "NodeDeployer", "TruthMarket", "LPPositionManager", "VenueFeeVault",
              "NodeFactory", "ReleaseRegistry"]
-ENV = {**os.environ, "FOUNDRY_TEST": "test/factory", "FOUNDRY_SCRIPT": "script/local"}
+ENV = {**os.environ, "FOUNDRY_PROFILE": "deploy", "FOUNDRY_TEST": "test/factory", "FOUNDRY_SCRIPT": "script/local"}
 
 
 def rpc(method, params):
