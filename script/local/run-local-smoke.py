@@ -2,7 +2,7 @@
 """Reproducible localhost-only two-node acceptance workflow; public Anvil keys only.
 
 No RPC/network argument exists. The runner starts and stops its own isolated Anvil.
-It does not relax code-size, initcode-size, or block-gas limits. Anvil 1.5.1 does
+It does not relax code-size, initcode-size, or block-gas limits. Anvil 1.9.0 does
 not enforce Osaka's EIP-7825 per-transaction gas cap; this limitation is recorded.
 """
 import json
@@ -172,7 +172,7 @@ def main():
             raise RuntimeError("Port 18545 is occupied; refusing to reuse an existing RPC")
     forge_version = subprocess.check_output([str(FORGE), "--version"], text=True)
     anvil_version = subprocess.check_output([str(ANVIL), "--version"], text=True)
-    assert "1.8.1" in forge_version and "1.5.1" in anvil_version
+    assert "1.8.1" in forge_version and "1.9.0" in anvil_version
     # The release manifest commits the exact ABI bytes before any deployment.
     subprocess.run([str(FORGE), "build"], cwd=ROOT, env=ENV, check=True)
     subprocess.run(["node", "script/export-client-abi.mjs"], cwd=ROOT, check=True)
@@ -194,7 +194,7 @@ def main():
                     time.sleep(0.1)
             else:
                 raise RuntimeError("Anvil did not start")
-            assert client == "anvil/v1.5.1" and int(rpc("eth_chainId", []), 16) == 31337
+            assert client == "anvil/v1.9.0" and int(rpc("eth_chainId", []), 16) == 31337
             assert int(rpc("eth_getBlockByNumber", ["latest", False])["gasLimit"], 16) == 30_000_000
             phases = [phase("run()", "deployed")]
             m = manifest()
@@ -244,7 +244,7 @@ def main():
                 "blockGasLimit": 30_000_000, "transactionGasLimit": 16_777_216,
                 "runtimeLimit": 24_576, "initcodeLimit": 49_152,
                 "limitations": ["Local deterministic test assets and ManualAdjudicator only; not a production resolver profile.",
-                    "Anvil 1.5.1 does not enforce the Osaka EIP-7825 per-transaction gas cap. This runner independently rejects any receipt gas used or submitted transaction gas limit above 16,777,216.",
+                    "Anvil 1.9.0 does not enforce the Osaka EIP-7825 per-transaction gas cap. This runner independently rejects any receipt gas used or submitted transaction gas limit above 16,777,216.",
                     "Runtime hashes in snapshots prove continuity; runtime-verification.json separately compares committed source artifacts with deployed runtime."],
                 "artifactOrder": ARTIFACTS, "phases": phases, "negativePermissionProbes": negatives,
                 "timeoutRefundNative": m["timeoutRefundNative"], "takerBalanceBeforeTimeoutPhase": str(before_refund),
