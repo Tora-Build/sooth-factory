@@ -191,7 +191,7 @@ contract OrderEngineVaultFeeTest is Test {
             "engine balance == backing exactly (no stray fee custody)"
         );
 
-        // USDG/book value cannot enter the LP bucket.
+        // Book value cannot enter the LP bucket.
         uint256 lp = 0; // Book has no LP liability class.
         uint256 adj =
             vault.accountOf(market, IBookFeeVault.Bucket.RESOLUTION, address(usdc));

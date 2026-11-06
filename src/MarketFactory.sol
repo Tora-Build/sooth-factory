@@ -82,12 +82,12 @@ contract MarketFactory is IMarketFactory, ReentrancyGuard {
     error ZeroLiquidity();
     error TransferAmountMismatch();
 
-    /// @notice Acknowledgement required to admit a token. On-chain probes do not
-    ///         detect every hook, future pause, or future blacklist.
     /// @dev A deadline further ahead would put the timeout INVALID out of reach, and
     ///      a market without a reachable timeout can freeze funds permanently.
     uint64 public constant MAX_MARKET_DURATION = 1825 days;
 
+    /// @notice Acknowledgement required to admit a token. On-chain probes do not
+    ///         detect every hook, future pause, or future blacklist.
     bytes32 public constant TOKEN_RISK_ACKNOWLEDGEMENT =
         keccak256("SOOTH_TOKEN_ADMISSION_V1:hooks,pause,blacklist-not-fully-detectable");
     /// @dev Canonical ERC-1820 registry. Absent code means no ERC-777 registration

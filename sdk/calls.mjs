@@ -1,4 +1,4 @@
-// Caller helpers for token admission and guardian vetoes.
+// Caller helpers for token admission.
 // Ethers v6 collapses both setTokenAllowed overloads onto one property.
 // Admit with factory["setTokenAllowed(address,bool,bytes32)"](token, true, acknowledgement).
 // viem 2.45 selects the overload from the argument list and rejects that
@@ -120,7 +120,7 @@ function isEmptyOrUndecodableData(value) {
 /**
  * Read TOKEN_RISK_ACKNOWLEDGEMENT() on the factory.
  * MarketFactory has no on-chain interface-version string; this constant is the
- * version signal. A bytes32 means v7.3. A contract revert, CALL_EXCEPTION, or
+ * version signal. A bytes32 means a current factory. A contract revert, CALL_EXCEPTION, or
  * empty or undecodable return is an older factory. Network, timeout, and any
  * other error propagate. The probe ABI is fixed, so a local artifact that
  * omits the function still results in an eth_call.

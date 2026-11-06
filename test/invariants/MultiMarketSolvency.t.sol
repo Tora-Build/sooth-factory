@@ -196,7 +196,9 @@ contract MultiMarketHandler is DualTokenBase {
         amm.redeemLPPosition(
             markets[m], receipt, balance / 2 == 0 ? balance : balance / 2
         );
-        assertEq(tokens[2].balanceOf(actor), beforeBook, "entry burn cannot pay USDG");
+        assertEq(
+            tokens[2].balanceOf(actor), beforeBook, "entry burn cannot pay book token"
+        );
         burnedAny[m] = true;
         ++successes[15];
     }
@@ -595,7 +597,9 @@ contract MultiMarketHandler is DualTokenBase {
         uint256 beforeBook = tokens[2].balanceOf(creator);
         vm.prank(creator);
         amm.redeemLP(markets[m], amount);
-        assertEq(tokens[2].balanceOf(creator), beforeBook, "LP burn cannot pay USDG");
+        assertEq(
+            tokens[2].balanceOf(creator), beforeBook, "LP burn cannot pay book token"
+        );
         burnedAny[m] = true;
         ++successes[12];
     }
@@ -653,7 +657,9 @@ contract MultiMarketHandler is DualTokenBase {
             vm.prank(creator);
             vault.claimLPDividend(mk);
             assertEq(
-                tokens[2].balanceOf(creator), beforeBook, "LP dividend cannot pay USDG"
+                tokens[2].balanceOf(creator),
+                beforeBook,
+                "LP dividend cannot pay book token"
             );
         } else if (kind == 6) {
             if (

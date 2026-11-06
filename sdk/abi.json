@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "interfaceVersion": "sooth-factory-v0.1.0",
   "abiDigest": "sha256:340ac60a8742fdf10b75e5ab8793630a0bfc3009531dd041581892c1f1948ce9",
-  "buildDigest": "sha256:c1860731033711348bac58aec6366a0130cd0cd0bdb5a30e7b856bb35daa78fa",
+  "buildDigest": "sha256:ebc25873a62028e29b95b936979cbbe0e956bd4fa9458928e310577a7e5d6889",
   "capabilities": {
     "grossInventory": true,
     "reservedInventory": true,

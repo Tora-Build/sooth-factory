@@ -1,6 +1,6 @@
- Use the canonical [settlement and timeout payment policy](fee-accounting-and-same-token.md#5-settlement-and-timeout-policy).# Economics and hardening
+# Economics and hardening
 
-This document owns economic rationale, sponsor budgets and liquidity-entry protection, growth-policy requirements, maker-readiness measures and interactions. See [document authority](../README.md#document-authority) for specification ownership and [current status](../STATUS.md) for readiness. Fee/accounting mechanisms belong to the [fee specification](fee-accounting-and-same-token.md); administrative capabilities, market commitments, and settlement authority belong to the [factory specification](factory-and-authority.md). No implementation or economic-return claim is implied.
+This document owns economic rationale, sponsor budgets and liquidity-entry protection, growth-policy requirements, maker-readiness measures and interactions. See [document authority](../README.md#document-authority) for specification ownership and [current status](../STATUS.md) for readiness. Fee/accounting mechanisms belong to the [fee specification](fee-accounting-and-same-token.md); administrative capabilities, market commitments, and settlement authority belong to the [factory specification](factory-and-authority.md). Use the canonical [settlement and timeout payment policy](fee-accounting-and-same-token.md#5-settlement-and-timeout-policy). No implementation or economic-return claim is implied.
 
 ## 1. Economic objective and boundaries
 

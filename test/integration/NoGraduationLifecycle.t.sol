@@ -16,10 +16,10 @@ import {TruthMarket} from "src/TruthMarket.sol";
  * @title No-graduation lifecycle matrix
  * @notice Both venues register atomically at creation and trade iff
  *         TruthMarket.isTradingOpen(). Every row of the lifecycle matrix is
- *         exercised on the REAL stack for the AMM and the USDG book together:
+ *         exercised on the REAL stack for the AMM and the stablecoin book together:
  *         registration, pre-start, exact start, resolving, veto leaves trading closed, exact
  *         deadline (including after a veto), terminal states, unwind paths after
- *         trading closes, final-outcome parity, fully allocated USDG, timeout refunds, and creation-only pause.
+ *         trading closes, final-outcome parity, fully allocated book token, timeout refunds, and creation-only pause.
  *
  *         Fixture rates are test values; every assertion is a relationship
  *         (rate x fee basis, split sums, assigned recipients), never a policy constant.
@@ -712,7 +712,7 @@ contract NoGraduationLifecycleTest is DualTokenBase {
         assertEq(east.balanceOf(trader), traderA, "trader payout independent of order");
         assertEq(east.balanceOf(creator), creatorA, "creator payout independent of order");
         assertEq(usdc.balanceOf(alice), aliceA, "book payout independent of order");
-        assertEq(usdc.balanceOf(creator), 0, "LP never receives USDG");
+        assertEq(usdc.balanceOf(creator), 0, "LP never receives book token");
         _assertSystemSolvent();
     }
 }

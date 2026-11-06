@@ -393,7 +393,7 @@ contract AMMEngineVaultTest is Test {
             vm.prank(creator);
             vault.claimLPDividend(market);
         }
-        assertEq(usdc.balanceOf(creator), 0, "LP receives zero USDG");
+        assertEq(usdc.balanceOf(creator), 0, "LP receives zero book token");
         _assertWidenedInvariant();
     }
 

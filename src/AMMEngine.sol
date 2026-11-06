@@ -463,8 +463,8 @@ contract AMMEngine is IAMMEngine, ReentrancyGuard {
     ///         `10**(18 - tokenADecimals)` for the native amount that moved.
     /// @return feesPaid Vault dividend, **native Token A units** — already the
     ///         transferred amount.
-    /// @dev **The three returns are not in the same unit; summing them is a bug**
-    ///      (issue #1, I-1). The native total actually transferred is
+    /// @dev **The three returns are not in the same unit; summing them is a bug.**
+    ///      The native total actually transferred is
     ///      `floorPaid / 10**(18 - decimals) + feesPaid`. `redeemedWad` is not a
     ///      third cash leg. See `LPProceedsClaimed`.
     function claimAvailable(address market, uint256 positionId, uint256 units)

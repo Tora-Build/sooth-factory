@@ -129,7 +129,7 @@ contract DualTokenE2ETest is DualTokenBase {
         uint256 floorShare = amm.redeemLP(market, creatorLP);
 
         uint256 usdcDividend = vault.lpEntitlementOf(market, creator, address(usdc));
-        assertEq(usdcDividend, 0, "LP has no USDG entitlement");
+        assertEq(usdcDividend, 0, "LP has no book token entitlement");
 
         if (floorShare > 0) {
             vm.prank(creator);
@@ -139,7 +139,7 @@ contract DualTokenE2ETest is DualTokenBase {
             vm.prank(creator);
             vault.claimLPDividend(market);
         }
-        assertEq(usdc.balanceOf(creator), 0, "LP receives zero USDG");
+        assertEq(usdc.balanceOf(creator), 0, "LP receives zero book token");
 
         // ── 7. System-wide solvency at rest ──
         assertGe(

@@ -294,7 +294,7 @@ contract DualTokenSolvencyInvariant is DualTokenBase {
         assertEq(
             bookVault.marketLiabilitiesOf(market, address(usdc)),
             bookVault.totalLiabilitiesOf(address(usdc)),
-            "USDG liability stays market scoped"
+            "Book liability stays market scoped"
         );
     }
 
